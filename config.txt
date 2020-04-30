@@ -1,0 +1,5 @@
+
+[database]
+con = sqlite:///users.db
+[mysql]
+con = mysql://test:%s@192.168.209.150/dash_login
