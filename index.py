@@ -4,7 +4,7 @@ from dash.dependencies import Input, Output
 
 from app import app, login_manager, User
 from app import server
-from apps import home, login, login_fd, signup, unconfrimed
+from apps import home, login, login_fd, signup, unconfrimed, dataset
 
 from apps.signup import confirm_email, resend_email, show_users
 from flask_login import logout_user, current_user
@@ -36,6 +36,8 @@ def display_page(pathname):
 
     if pathname == '/home':
         return micro_router(home.layout)
+    elif pathname =='/dataset':
+        return dataset.layout
     elif pathname == "/login":
         return login.layout
     elif pathname == "/signup":
@@ -51,14 +53,14 @@ def display_page(pathname):
             return dcc.Location(pathname='/login', id='login_redirect')
         else:
             return dcc.Location(pathname='/login', id='login_redirect')
-    elif pathname.startswith('/confirm'):
+    elif str(pathname).startswith('/confirm'):
         if pathname.startswith('/confirm/'):
             token = pathname.split('/')[-1]
             if confirm_email(token) == '/home':
                 return dcc.Location(pathname='/home', id="home_url")
             else:
                 return dcc.Location(pathname='/login', id='login_redirect')
-    elif pathname.startswith('/unconfirmed'):
+    elif str(pathname).startswith('/unconfirmed'):
         return unconfrimed.layout
     elif pathname == "/resend":
         if resend_email() == '/unconfirmed':
