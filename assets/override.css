@@ -1,12 +1,7 @@
 body {
-  color: #506784;
-  background:
-    linear-gradient(
-      rgba(255, 255, 255, 0.6),
-      rgba(255, 255, 255, 0.6)
-    ),
-    url("https://github.com/plotly/dash-docs/raw/master/images/dash-pattern.png");
+  background-image: url("./background.svg");
   margin: 0px;
+  height: 100% !important;
 }
 
 .user_card {

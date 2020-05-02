@@ -7,34 +7,23 @@ import dash_extra_ui_components as educ
 
 from app import app
 
-dataset_card = dbc.Card(
-    [
-        html.A([
-            dbc.CardImg(src="/assets/acoin-xjoz2.svg", top=True),
-            dbc.CardFooter("Dataset Preparation", className="text-center")
-        ], href='/dataset'),
-    ],
-    # style={"width": "18rem"}
+myGirl = dbc.Card(
+    style={"height": "100px", "width":"400px"},
+    className="girlCard"
 )
 
 layout = html.Div([
     navbar,
     dbc.Container([
-        html.H4("Welcome to demo page", className="text-center mt-5 mb-4"),
+        html.H4("Welcome to demo page", className="text-center mt-5 mb-4", style={"color":"white"}),
         dbc.Row([
-            dbc.Col(dataset_card),
-            dbc.Col(dataset_card),
-            dbc.Col(dataset_card),
-        ], className="mb-4"),
+            dbc.Col(myGirl),
+        ]),
         dbc.Row([
-            dbc.Col(dataset_card),
-            dbc.Col(dataset_card),
-            dbc.Col(dataset_card),
-        ], className="mb-4"),
+            dbc.Col(myGirl),
+        ],),
         dbc.Row([
-            dbc.Col(dataset_card),
-            dbc.Col(dataset_card),
-            dbc.Col(dataset_card),
-        ], className="mb-4"),
+            dbc.Col(myGirl),
+        ]),
     ])
 ])
