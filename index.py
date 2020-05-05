@@ -3,7 +3,7 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 
 from app import app, login_manager, User
-from app import server
+from app import server, Pms
 from apps import home, login, login_fd, signup, unconfrimed, dataset
 
 from apps.signup import confirm_email, resend_email, show_users

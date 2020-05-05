@@ -4,6 +4,7 @@ import dash
 import os
 from flask_login import LoginManager, UserMixin
 from users_mgt import db, User as base, create_user_table
+from pms_mgt import db, Pms as pms_base, create_pms_table
 from config import config, connectionstring
 import dash_bootstrap_components as dbc
 from flask_session import Session
@@ -17,6 +18,7 @@ external_stylesheets=[dbc.themes.BOOTSTRAP, FONT_AWESOME]
 # external_stylesheets=[FONT_AWESOME, BOOTSTRAP_CSS]
 external_scripts = ["https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js", "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"]
 
+create_pms_table()
 create_user_table()
 
 app = dash.Dash(
@@ -91,6 +93,9 @@ login_manager.login_view = '/login'
 
 # Create User class with UserMixin
 class User(UserMixin, base):
+    pass
+
+class Pms(pms_base):
     pass
 
 # callback to reload the user object

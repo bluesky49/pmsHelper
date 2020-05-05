@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash
 from config import engine
 from flask_login import UserMixin
+
 # 
 
 db = SQLAlchemy()
@@ -37,9 +38,9 @@ class User(db.Model):
                            nullable=True)
     confirmed = db.Column(db.Boolean, nullable=False, default=False)
     confirmed_on = db.Column(db.DateTime, nullable=True)
+    # pms_mgt = db.relationship('Pms', backref='author', lazy=True)
 
 User_tbl = Table('user', User.metadata)
-
 
 def create_user_table():
     User.metadata.create_all(engine)
