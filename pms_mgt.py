@@ -2,7 +2,7 @@ from sqlalchemy import Table
 from sqlalchemy.sql import select
 from flask_sqlalchemy import SQLAlchemy
 from config import engine
-
+import json
 db = SQLAlchemy()
 
 class Pms(db.Model):
@@ -56,16 +56,23 @@ def delete_girl_pms_data(girlName, id):
     conn.execute(delete)
     conn.close()
 
-def update_user(stmp):
+def update_girl_pms_data(user_id, updateData):
+    updateString = users.update()\
+        .where(Pms_tbl.c.id==user_id)\
+        .values(girlName=updateData['girlName'], 
+                startDate=updateData['startDate'],
+                cycle=updateData['cycle'],
+                ovulation=updateData['ovulation'],
+                menstruation=updateData['menstruation']
+                )
     conn = engine.connect()
-    conn.execute(stmp)
+    conn.execute(updateString)
     conn.close()
 
 
 def get_girl_pms(user_id):
-    select_st = select([Pms_tbl.c.girlName, Pms_tbl.c.startDate , Pms_tbl.c.cycle, Pms_tbl.c.menstruation, Pms_tbl.c.ovulation ]).where(user_id==user_id)
+    select_st = select([Pms_tbl.c.id, Pms_tbl.c.girlName, Pms_tbl.c.startDate , Pms_tbl.c.cycle, Pms_tbl.c.menstruation, Pms_tbl.c.ovulation ]).where(user_id==user_id)
     conn = engine.connect()
-    rs = conn.execute(select_st)
-    
+    res = conn.execute(select_st)
     conn.close()
-    return rs
+    return json.dumps([dict(r) for r in res])
