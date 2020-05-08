@@ -9,8 +9,9 @@ from pms_mgt import db, Pms as base, add_girl_pms_data, delete_girl_pms_data, up
 import json
 from app import app
 
-PMSData = '[{"girlName": "Anna", "startDate": "2020-04-25", "cycle": 30, "menstruation": 7, "ovulation": 14},{"girlName": "Olga", "startDate": "2020-04-28", "cycle": 28, "menstruation": 5, "ovulation": 13}]'
-title = "Welcome to demo page",
+PMSData = '[]'
+
+title = "",
 layout = html.Div([
     navbar,
     dbc.Container([
@@ -33,11 +34,11 @@ layout = html.Div([
 
 @app.callback(Output('pms', 'value'),
             [Input('get', 'n_clicks'),
-            Input('addList', 'value')]
+            Input('addList', 'value'),
+            Input('updateList', 'value')]
             )
-def get(n_clicks, updateList):
+def get(n_clicks, addList,updateList):
     result = get_girl_pms(current_user.id)
-    print(result)
     return result
 
 @app.callback(Output('addList', 'value'),
@@ -52,5 +53,6 @@ def add(newGirl):
                     [Input('pms','updateData')]
                     )
 def update(updateData):
+    print(updateData)
     if(updateData):
-        update_girl_pms_data(updateData)
+        update_girl_pms_data(updateData['id'],updateData)

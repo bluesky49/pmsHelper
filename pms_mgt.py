@@ -57,7 +57,7 @@ def delete_girl_pms_data(girlName, id):
     conn.close()
 
 def update_girl_pms_data(user_id, updateData):
-    updateString = users.update()\
+    updateString = Pms_tbl.update()\
         .where(Pms_tbl.c.id==user_id)\
         .values(girlName=updateData['girlName'], 
                 startDate=updateData['startDate'],
