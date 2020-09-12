@@ -75,4 +75,4 @@ def get_girl_pms(user_id):
     conn = engine.connect()
     res = conn.execute(select_st)
     conn.close()
-    return json.dumps([dict(r) for r in res])
+    return [dict(r) for r in res]

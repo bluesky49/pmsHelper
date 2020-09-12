@@ -101,3 +101,58 @@ body {
   color: red;
   font-size: 12px;
 }
+
+.girlList {
+  background-color:  #EEEEEE;
+  height: 700px;
+}
+
+.girlData {
+  background-color:  #EEEEEE;
+  height: 700px;
+}
+
+.items:hover{
+  background: linear-gradient(to bottom, #999999 0%, #000000 100%) !important;
+  color : white !important;
+}
+
+.itemTitle {
+  background: linear-gradient(to bottom, #999999 0%, #000000 100%) !important;
+  color : white !important;
+  font-size: 30px !important;
+  width: 100% !important;
+  padding: 10px !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.listTitle {
+  margin: 0px 15px 0px 15px !important;
+  text-align: center;
+}
+
+.dataTitle {
+  margin: 30px 45px 45px 45px !important;
+  height: 100px !important;
+}
+
+.girlCard {
+  box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
+  text-align: center;
+  width: auto !important;
+}
+
+.list-group {
+  margin-top: 0px !important;
+  margin-left: 15px !important;
+  width: 100% !important;
+}
+
+.girlListGroup {
+  width: 100% !important;
+  margin-right: 30px;
+}
+
+.dash-graph {
+  margin-top: 45px !important;
+}
